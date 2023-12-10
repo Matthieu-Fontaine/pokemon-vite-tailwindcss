@@ -7,6 +7,10 @@ type Props = {
 
 const PokemonCard: FunctionComponent<Props> = ({ pokemon }) => {
 
+  const formatDate = (date: Date): string => {
+    return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  }
+
   return (
     <div key={pokemon.id} className="max-w-xs rounded-md shadow-md dark:bg-gray-900 dark:text-gray-100 mb-6">
       <img src={pokemon.picture} alt={pokemon.name} className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500" />
@@ -15,6 +19,7 @@ const PokemonCard: FunctionComponent<Props> = ({ pokemon }) => {
           <h2 className="text-3xl font-semibold tracki">{pokemon.name}</h2>
           <p className="dark:text-gray-100">hp: {pokemon.hp} cp: {pokemon.cp}</p>
           <p className="dark:text-gray-100">Types: {pokemon.types.join(' ')}</p>
+          <p className="dark:text-gray-100 text-xs">Created: {formatDate(pokemon.created)}</p>
         </div>
       </div>
     </div>);
